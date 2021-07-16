@@ -105,6 +105,7 @@ router.get('/driver/:email', async (req, res, next) => {
 								'postponed',
 								'invoiced',
 								'returned',
+								'paid',
 							],
 						},
 					},
