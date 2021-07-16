@@ -8,6 +8,7 @@ import {
 	LocationCell,
 	ConciergeCell,
 	CarMakeCell,
+	ServicesCell,
 } from './Cells.js'
 
 const defaultStringCompareOptions = {sensitivity: 'base'}
@@ -50,10 +51,22 @@ const columns = [
 		render: (value, row) => <CarMakeCell value={value} row={row} />,
 	},
 	{
+		title: 'Services',
+		dataIndex: 'services',
+		align: 'center',
+		width: 50,
+		render: (value, row) => <ServicesCell value={value} row={row} />,
+	},
+	{
 		title: 'Customer',
 		dataIndex: 'customer',
 		key: 'customer',
 		render: (value, row) => <CustomerNameCell value={value} row={row} />,
+	},
+	{
+		title: 'Customer Phone #',
+		dataIndex: 'customerPhoneNumber',
+		key: 'customerPhoneNumber',
 	},
 	{
 		title: 'pickupLocation',

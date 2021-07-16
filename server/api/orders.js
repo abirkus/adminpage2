@@ -112,6 +112,7 @@ router.get('/driver/:email', async (req, res, next) => {
 				],
 			},
 			include: [
+				{model: Service},
 				{model: Customer},
 				{model: Driver, as: 'pickUpDriver'},
 				{model: Driver, as: 'returnDriver'},
