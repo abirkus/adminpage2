@@ -59,7 +59,6 @@ router.get('/detailing', async (req, res, next) => {
 			where: {
 				status: detailingOrders,
 			},
-			order: [['dropoffDate', 'ASC']],
 			include: [
 				{model: Service},
 				{model: Customer},
