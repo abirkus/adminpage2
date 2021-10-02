@@ -8,31 +8,17 @@ const {
 	Driver,
 	Dealer,
 } = require('../db/models')
+const helper = require('../utilServer')
 const Op = Sequelize.Op
 module.exports = router
 
 router.get('/', async (req, res, next) => {
 	try {
+		const activeArr = helper.getStatusArray
 		const orders = await Order.findAll({
 			where: {
 				status: {
-					[Op.not]: [
-						'booked new',
-						'booked us',
-						'followed up - text',
-						'followed up - call',
-						'followed up - email',
-						'confirmed',
-						'in process',
-						'pending work approvals',
-						'ready to be returned',
-						'returned',
-						'quote inquired by customer',
-						'quote sent to a shop',
-						'quote sent to a customer',
-						'invoiced',
-						'postponed',
-					],
+					[Op.not]: activeArr,
 				},
 			},
 			order: [['updatedAt', 'DESC']],
@@ -46,25 +32,10 @@ router.get('/', async (req, res, next) => {
 
 router.get('/active', async (req, res, next) => {
 	try {
+		const activeArr = helper.getStatusArray
 		const orders = await Order.findAll({
 			where: {
-				status: [
-					'booked new',
-					'booked us',
-					'followed up - text',
-					'followed up - call',
-					'followed up - email',
-					'confirmed',
-					'in process',
-					'pending work approvals',
-					'ready to be returned',
-					'returned',
-					'quote inquired by customer',
-					'quote sent to a shop',
-					'quote sent to a customer',
-					'invoiced',
-					'postponed',
-				],
+				status: activeArr,
 			},
 			order: [['updatedAt', 'DESC']],
 			include: [
@@ -81,15 +52,36 @@ router.get('/active', async (req, res, next) => {
 	}
 })
 
+router.get('/detailing', async (req, res, next) => {
+	try {
+		const detailingOrders = helper.getDetailingStatusArray
+		const orders = await Order.findAll({
+			where: {
+				status: detailingOrders,
+			},
+			order: [['dropoffDate', 'ASC']],
+			include: [
+				{model: Service},
+				{model: Customer},
+				{model: Driver, as: 'pickUpDriver'},
+				{model: Driver, as: 'returnDriver'},
+			],
+		})
+		res.json(orders)
+	} catch (err) {
+		next(err)
+	}
+})
+
 router.get('/driver/:email', async (req, res, next) => {
 	const email = req.params.email
 	try {
+		const completedStatusesArr = helper.getCompletedStatusArray
 		const driver = await Driver.findOne({
 			where: {
 				email,
 			},
 		})
-		console.log('inside the api route for driver', driver)
 
 		const orders = await Order.findAll({
 			where: {
@@ -100,13 +92,7 @@ router.get('/driver/:email', async (req, res, next) => {
 				[Op.and]: [
 					{
 						status: {
-							[Op.not]: [
-								'cancelled',
-								'postponed',
-								'invoiced',
-								'returned',
-								'paid',
-							],
+							[Op.not]: completedStatusesArr,
 						},
 					},
 				],
