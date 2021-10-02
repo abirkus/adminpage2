@@ -7,6 +7,8 @@ export const getStatusArray = () => {
 		'followed up - email',
 		'cancelled',
 		'confirmed',
+		'waiting on detailing',
+		'in repair',
 		'in process',
 		'pending work approvals',
 		'ready to be returned',
@@ -31,7 +33,12 @@ export const getTakeActionStatusArray = () => {
 }
 
 export const getWorkZoneStatusArray = () => {
-	return ['in process', 'pending work approvals']
+	return [
+		'in process',
+		'pending work approvals',
+		'waiting on detailing',
+		'in repair',
+	]
 }
 
 export const getInvoicesStatusArray = () => {
@@ -46,8 +53,16 @@ export const getQuotesStatusArray = () => {
 	]
 }
 
+export const getDetailingStatusArray = () => {
+	return ['waiting on detailing', 'in process']
+}
+
 export const getPotentialLeadsStatusArray = () => {
 	return ['postponed']
+}
+
+export const getCompletedStatusArray = () => {
+	return ['cancelled', 'postponed', 'invoiced', 'returned', 'paid']
 }
 
 export const getConfirmedTripsArray = () => {

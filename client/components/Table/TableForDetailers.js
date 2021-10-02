@@ -5,7 +5,6 @@ import {
 	OrderDetailsCell,
 	CustomerNameCell,
 	StatusCell,
-	LocationCell,
 	ConciergeCell,
 	CarMakeCell,
 	ServicesCell,
@@ -64,21 +63,9 @@ const columns = [
 		render: (value, row) => <CustomerNameCell value={value} row={row} />,
 	},
 	{
-		title: 'Customer Phone #',
-		dataIndex: 'customerPhoneNumber',
-		key: 'customerPhoneNumber',
-	},
-	{
-		title: 'pickupLocation',
-		dataIndex: 'pickupLocation',
-		key: 'pickupLocation',
-		render: value => <LocationCell value={value} />,
-	},
-	{
 		title: 'pickupDate',
 		dataIndex: 'pickupDate',
 		key: 'pickupDate',
-		defaultSortOrder: 'descend',
 		sorter: (a, b) => m(a.pickupDate).diff(m(b.pickupDate)),
 		sortDirections: ['descend', 'ascend'],
 		render: value => <DateCell value={value} />,
@@ -89,6 +76,7 @@ const columns = [
 		key: 'dropoffDate',
 		sorter: (a, b) => m(a.dropoffDate).diff(m(b.dropoffDate)),
 		sortDirections: ['descend', 'ascend'],
+		defaultSortOrder: 'descend',
 		render: value => <DateCell value={value} />,
 	},
 ]
