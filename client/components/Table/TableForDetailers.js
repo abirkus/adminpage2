@@ -76,7 +76,7 @@ const columns = [
 		key: 'dropoffDate',
 		sorter: (a, b) => m(a.dropoffDate).diff(m(b.dropoffDate)),
 		sortDirections: ['descend', 'ascend'],
-		defaultSortOrder: 'descend',
+		defaultSortOrder: 'ascend',
 		render: value => <DateCell value={value} />,
 	},
 ]
