@@ -39,7 +39,11 @@ module.exports = {
 		'quote sent to a shop',
 		'quote sent to a customer',
 	],
-	getDetailingStatusArray: ['waiting on detailing', 'in process'],
+	getDetailingStatusArray: [
+		'waiting on detailing',
+		'in process',
+		'confirmed',
+	],
 	getPotentialLeadsStatusArray: ['postponed'],
 	getCompletedStatusArray: [
 		'cancelled',

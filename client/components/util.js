@@ -54,7 +54,7 @@ export const getQuotesStatusArray = () => {
 }
 
 export const getDetailingStatusArray = () => {
-	return ['waiting on detailing', 'in process']
+	return ['waiting on detailing', 'in process', 'confirmed']
 }
 
 export const getPotentialLeadsStatusArray = () => {

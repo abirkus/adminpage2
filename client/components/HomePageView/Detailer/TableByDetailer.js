@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react'
-import {Table} from 'antd'
 import columns from '../../Table/TableForDetailers'
 import {useSelector, useDispatch} from 'react-redux'
 import {getDetailerOrdersThunk} from '../../../Redux/orders/activeOrders'
+import CollapseByDate from '../CollapseByDate'
 
 const TableByDetailer = () => {
 	const dispatch = useDispatch()
@@ -13,13 +13,10 @@ const TableByDetailer = () => {
 	}, [])
 
 	return (
-		<Table
-			scroll={{x: 'max-content'}}
+		<CollapseByDate
+			orders={orders}
+			dateColumn='dropoffDate'
 			columns={columns}
-			dataSource={orders}
-			pagination={false}
-			size='small'
-			rowKey='hash'
 		/>
 	)
 }

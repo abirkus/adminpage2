@@ -1,15 +1,15 @@
 import React from 'react'
 import {Table} from 'antd'
-import columns from '../Table/HomeTableColumns'
 
 const DefaultTable = props => {
 	const array = props.ordersArray || []
+	const cols = props.columns
 	const pagination = props.pagination || false
 
 	return (
 		<Table
 			scroll={{x: 'max-content'}}
-			columns={columns}
+			columns={cols}
 			dataSource={array}
 			pagination={pagination}
 			size='small'
