@@ -16,7 +16,7 @@ import {
 	addOrderDriverThunk,
 	addOrderDealerThunk,
 	removeOrderDealerThunk,
-} from '../../store/singleorder'
+} from '../../Redux/orders/singleorder'
 import './styles.scss'
 
 const statusArray = getStatusArray()

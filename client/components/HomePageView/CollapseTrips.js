@@ -1,5 +1,5 @@
 import React from 'react'
-import TableOrdersByStatus from './TableOrdersByStatus'
+import DefaultTable from './DefaultTable'
 import {Collapse, Spin, Alert} from 'antd'
 const {Panel} = Collapse
 import moment from 'moment'
@@ -64,7 +64,7 @@ const CollapseTrips = props => {
 		<Collapse>
 			{groupedArr.map((el, index) => (
 				<Panel key={index} header={alertHelper(el[0], el[1])}>
-					<TableOrdersByStatus ordersArray={el[1]} />
+					<DefaultTable ordersArray={el[1]} />
 				</Panel>
 			))}
 		</Collapse>

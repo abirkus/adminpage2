@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
-import {me} from './store'
+import {me} from './Redux'
 import {
 	AllCustomers,
 	SingleCustomer,

@@ -2,10 +2,10 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {Login, Signup} from './auth-form'
-import {logout} from '../store'
-import BookingsByStatus from './HomePageView/BookingsByStatus'
-import TableByDriver from './HomePageView/TableByDriver'
-import TableByDetailer from './HomePageView/TableByDetailer'
+import {logout} from '../Redux'
+import AdminMenu from './HomePageView/Admin/AdminMenu'
+import TableByDriver from './HomePageView/Driver/TableByDriver'
+import TableByDetailer from './HomePageView/Detailer/TableByDetailer'
 import {Tabs} from 'antd'
 const {TabPane} = Tabs
 import {UnlockFilled, EditFilled} from '@ant-design/icons'
@@ -35,7 +35,7 @@ const Account = props => {
 		} else {
 			return (
 				<React.Fragment>
-					<BookingsByStatus />
+					<AdminMenu />
 				</React.Fragment>
 			)
 		}

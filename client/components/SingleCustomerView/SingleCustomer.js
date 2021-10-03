@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import {withRouter, Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {getCustomerOrdersThunk} from '../../store/customerorders'
+import {getSingleCustomerThunk} from '../../Redux/customers/singlecustomer'
+import {getCustomerOrdersThunk} from '../../Redux/customers/customerorders'
 import {Card} from 'antd'
-import {getSingleCustomerThunk} from '../../store/singlecustomer'
 import UpdateCustomer from './UpdateCustomer'
 import moment from 'moment'
 

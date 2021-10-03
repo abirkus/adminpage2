@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {Button, Dropdown, Menu} from 'antd'
-import {updateSingleUserThunk} from '../../store/users'
+import {updateSingleUserThunk} from '../../Redux/users/users'
 import {DownOutlined} from '@ant-design/icons'
 
 const roles = ['unconfirmed', 'admin', 'driver', 'detailer']

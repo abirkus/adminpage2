@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
-import {updateDriverThunk} from '../../store/drivers.js'
+import {updateDriverThunk} from '../../Redux/drivers/drivers'
 import {Modal, Button, Form, Input, Select} from 'antd'
 import {EditFilled} from '@ant-design/icons'
 import {tagColorsArray} from '../util'

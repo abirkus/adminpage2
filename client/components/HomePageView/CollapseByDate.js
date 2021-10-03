@@ -1,5 +1,5 @@
 import React from 'react'
-import TableOrdersByStatus from './TableOrdersByStatus'
+import DefaultTable from './DefaultTable'
 import {Collapse, Spin} from 'antd'
 const {Panel} = Collapse
 import moment from 'moment'
@@ -33,7 +33,7 @@ const CollapseByDate = props => {
 					header={`${dateColumn} ${moment(el[0]).format(
 						'M/D/YY'
 					)}  count ${el[1].length}`}>
-					<TableOrdersByStatus ordersArray={el[1]} />
+					<DefaultTable ordersArray={el[1]} />
 				</Panel>
 			))}
 		</Collapse>

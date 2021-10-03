@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Modal, Button, Form, InputNumber} from 'antd'
-import {updateOrderDetailsThunk} from '../../store/singleorder'
+import {updateOrderDetailsThunk} from '../../Redux/orders/singleorder'
 import {useParams} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {EditFilled} from '@ant-design/icons'

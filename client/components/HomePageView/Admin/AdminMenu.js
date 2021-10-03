@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {getActiveOrdersThunk} from '../../store/activeOrders'
-import TableOrdersByStatus from './TableOrdersByStatus'
-import CollapseByDate from './CollapseByDate'
-import CollapseByBothDates from './CollapseByBothDates'
+import {getActiveOrdersThunk} from '../../../Redux/orders/activeOrders'
+import DefaultTable from '../DefaultTable'
+import CollapseByDate from '../CollapseByDate'
+import CollapseTrips from '../CollapseTrips'
+import SearchBar from '../../Shared/SearchBar'
 import {
 	getTakeActionStatusArray,
 	getWorkZoneStatusArray,
@@ -11,11 +12,9 @@ import {
 	getQuotesStatusArray,
 	getPotentialLeadsStatusArray,
 	getConfirmedTripsArray,
-} from '../util'
-import axios from 'axios'
-import history from '../../history'
+} from '../../util'
 
-import {Layout, Menu, Input} from 'antd'
+import {Layout, Menu} from 'antd'
 import {
 	NotificationOutlined,
 	ToolOutlined,
@@ -25,10 +24,9 @@ import {
 	MenuOutlined,
 	CarOutlined,
 } from '@ant-design/icons'
-const {Search} = Input
-const {Content, Sider} = Layout
+const {Content} = Layout
 
-const BookingsByStatus = () => {
+const AdminMenu = () => {
 	const dispatch = useDispatch()
 	const [render, updateRender] = useState(1)
 
@@ -66,40 +64,16 @@ const BookingsByStatus = () => {
 
 	const components = {
 		1: <CollapseByDate orders={actionArr} dateColumn='pickupDate' />,
-		// 2: <CollapseByDate orders={workZoneArr} dateColumn='pickupDate' />,
-		2: <TableOrdersByStatus ordersArray={workZoneArr} />,
-		3: <CollapseByBothDates confirmedTrips={confirmedTrips} />,
-		4: <TableOrdersByStatus ordersArray={invoiceArr} />,
-		5: <TableOrdersByStatus ordersArray={quotesArr} />,
-		6: <TableOrdersByStatus ordersArray={leadsArr} />,
-	}
-
-	const onSearch = async value => {
-		let strValue = value.trim()
-		let singleorder
-		try {
-			singleorder = await axios.get(`/api/orders/single/${strValue}`)
-		} catch (e) {
-			console.log('order not found', e)
-		}
-
-		if (singleorder.data) {
-			console.log('order found', singleorder)
-			await history.push(`/singleorder/${strValue}`)
-		} else {
-			window.alert('Order not found')
-		}
+		2: <DefaultTable ordersArray={workZoneArr} />,
+		3: <CollapseTrips orders={confirmedTrips} />,
+		4: <DefaultTable ordersArray={invoiceArr} pagination={true} />,
+		5: <DefaultTable ordersArray={quotesArr} />,
+		6: <DefaultTable ordersArray={leadsArr} />,
 	}
 
 	return (
 		<div>
-			<div>
-				<Search
-					placeholder='search for orders by order id ... '
-					onSearch={onSearch}
-					enterButton
-				/>
-			</div>
+			<SearchBar />
 			<Layout
 				className='site-layout-background'
 				style={{padding: '24px 0'}}>
@@ -137,4 +111,4 @@ const BookingsByStatus = () => {
 	)
 }
 
-export default BookingsByStatus
+export default AdminMenu

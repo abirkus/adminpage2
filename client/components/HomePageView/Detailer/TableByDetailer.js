@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react'
 import {Table} from 'antd'
-import columns from '../Table/TableForDetailers'
+import columns from '../../Table/TableForDetailers'
 import {useSelector, useDispatch} from 'react-redux'
-import {getDetailerOrdersThunk} from '../../store/activeOrders'
+import {getDetailerOrdersThunk} from '../../../Redux/orders/activeOrders'
 
 const TableByDetailer = () => {
 	const dispatch = useDispatch()

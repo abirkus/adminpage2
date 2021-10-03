@@ -5,7 +5,7 @@ import {
 	fetchCommentsThunk,
 	addCommentThunk,
 	clearCommentsThunk,
-} from '../../store/comments'
+} from '../../Redux/orders/comments'
 import {Form, Input, Button, Select, Comment, Tooltip, Avatar, List} from 'antd'
 const {Option} = Select
 import moment from 'moment'

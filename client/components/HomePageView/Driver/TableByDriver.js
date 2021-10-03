@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react'
 import {Table, Collapse, Spin, Alert} from 'antd'
-import columns from '../Table/HomeTableForDriversColumns'
+import columns from '../../Table/HomeTableForDriversColumns'
 import {useSelector, useDispatch} from 'react-redux'
-import {getUserOrdersThunk} from '../../store/userorders'
+import {getUserOrdersThunk} from '../../../Redux/users/userorders'
 const {Panel} = Collapse
 import moment from 'moment'
 
