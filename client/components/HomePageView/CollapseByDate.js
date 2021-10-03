@@ -3,13 +3,12 @@ import DefaultTable from './DefaultTable'
 import {Collapse, Spin} from 'antd'
 const {Panel} = Collapse
 import moment from 'moment'
-import defaultColumns from '../Table/HomeTableColumns'
 import {panelHeaderHelper} from '../Shared/CollapsePanelHelper'
 
 const CollapseByDate = props => {
 	const dateColumn = props.dateColumn
 	const orders = props.orders || []
-	const cols = props.columns || defaultColumns
+	const cols = props.columns || []
 	const hashTable = {}
 	let groupedArr
 
