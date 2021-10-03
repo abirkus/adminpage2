@@ -2,7 +2,7 @@ import React from 'react'
 import {Card, Button} from 'antd'
 import UpdateDealer from './UpdateDealer'
 import {DeleteFilled} from '@ant-design/icons'
-import {removeDealerThunk} from '../../store/dealers.js'
+import {removeDealerThunk} from '../../Redux/dealers/dealers'
 import {useDispatch} from 'react-redux'
 
 const DealerCard = props => {

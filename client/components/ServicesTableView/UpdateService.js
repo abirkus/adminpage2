@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {Modal, Button, Form, Input, InputNumber} from 'antd'
-import {updateServiceThunk} from '../../store/services'
+import {updateServiceThunk} from '../../Redux/services/services'
 
 const layout = {
 	labelCol: {span: 8},

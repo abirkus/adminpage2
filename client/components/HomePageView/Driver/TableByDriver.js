@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react'
 import {Table, Collapse, Spin, Alert} from 'antd'
-import columns from '../Table/HomeTableForDriversColumns'
+import columns from '../../Table/HomeTableForDriversColumns'
 import {useSelector, useDispatch} from 'react-redux'
-import {getUserOrdersThunk} from '../../store/userorders'
+import {getUserOrdersThunk} from '../../../Redux/users/userorders'
 const {Panel} = Collapse
 import moment from 'moment'
+import {panelHeaderHelper} from '../../Shared/CollapsePanelHelper'
 
 const pickUpArray = [
 	'booked new',
@@ -14,30 +15,6 @@ const pickUpArray = [
 	'followed up - email',
 	'confirmed',
 ]
-
-const alertHelper = (el1, el2) => {
-	if (el1 === 'Invalid date') {
-		return (
-			<Alert
-				message='Invalid dates. Please update order drop off dates'
-				type='error'
-				showIcon
-			/>
-		)
-	} else if (moment(el1).isSame(moment(), 'day')) {
-		return <Alert message="Today's trips" type='warning' showIcon />
-	} else if (moment(el1).isBefore(moment())) {
-		return (
-			<Alert
-				message='Trip dates are in the past. Please update order dates'
-				type='error'
-				showIcon
-			/>
-		)
-	} else {
-		return `Trip date ${moment(el1).format('M/D/YY')}  count ${el2.length}`
-	}
-}
 
 const TableByDriver = props => {
 	const email = props.email
@@ -77,7 +54,7 @@ const TableByDriver = props => {
 	return (
 		<Collapse>
 			{groupedArr.map((el, index) => (
-				<Panel key={index} header={alertHelper(el[0], el[1])}>
+				<Panel key={index} header={panelHeaderHelper(el[0], el[1])}>
 					<Table
 						scroll={{x: 'max-content'}}
 						columns={columns}

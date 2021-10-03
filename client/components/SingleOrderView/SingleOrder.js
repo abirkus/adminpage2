@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {withRouter, Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {getSingleOrderThunk} from '../../store/singleorder'
+import {getSingleOrderThunk} from '../../Redux/orders/singleorder'
 import SingleOrderEmails from './SingleOrderEmails'
 import Invoice from './Invoice'
 import SingleOrderServices from './SingleOrderServices'

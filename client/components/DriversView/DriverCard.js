@@ -2,7 +2,7 @@ import React from 'react'
 import {Card, Button, Tag} from 'antd'
 import UpdateDriver from './UpdateDriver'
 import {DeleteFilled} from '@ant-design/icons'
-import {removeDriverThunk} from '../../store/drivers.js'
+import {removeDriverThunk} from '../../Redux/drivers/drivers'
 import {useDispatch} from 'react-redux'
 
 const DriverCard = props => {

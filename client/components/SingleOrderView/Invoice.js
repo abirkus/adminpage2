@@ -6,12 +6,12 @@ import {
 	getSquareCustomerThunk,
 	createInvoiceThunk,
 	clearSquareThunk,
-} from '../../store/square'
+} from '../../Redux/square/square'
 import {DownOutlined} from '@ant-design/icons'
-import {fetchDealersThunk} from '../../store/dealers.js'
-import {sendSingleEmailThunk} from '../../store/singleemail'
-import {getEmailsThunk} from '../../store/emails'
-import {fetchDriversThunk} from '../../store/drivers.js'
+import {fetchDealersThunk} from '../../Redux/dealers/dealers'
+import {sendSingleEmailThunk} from '../../Redux/google/singleemail'
+import {getEmailsThunk} from '../../Redux/google/emails'
+import {fetchDriversThunk} from '../../Redux/drivers/drivers'
 import UpdateOrder from './UpdateOrder'
 
 const dealerList = (arr, fn) => {

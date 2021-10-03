@@ -1,15 +1,11 @@
 import React, {Component} from 'react'
-import {withRouter, Link} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {getEventsThunk} from '../store/calendar'
 
 class CalendarView extends Component {
 	render() {
 		return (
 			<div>
-				{/* <button type='button' onClick={() => this.props.getEvents()}>
-					Get Events
-				</button> */}
 				<div>
 					<iframe
 						className='calendar'
@@ -22,9 +18,4 @@ class CalendarView extends Component {
 	}
 }
 
-// const mapDispatchToProps = dispatch => {
-// 	return {
-// 		getEvents: () => dispatch(getEventsThunk()),
-// 	}
-// }
 export default withRouter(connect(null, null)(CalendarView))

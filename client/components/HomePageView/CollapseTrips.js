@@ -1,32 +1,9 @@
 import React from 'react'
-import TableOrdersByStatus from './TableOrdersByStatus'
-import {Collapse, Spin, Alert} from 'antd'
+import DefaultTable from './DefaultTable'
+import {Collapse, Spin} from 'antd'
 const {Panel} = Collapse
 import moment from 'moment'
-
-const alertHelper = (el1, el2) => {
-	if (el1 === 'Invalid date') {
-		return (
-			<Alert
-				message='Invalid dates. Please update order drop off dates'
-				type='error'
-				showIcon
-			/>
-		)
-	} else if (moment(el1).isSame(moment(), 'day')) {
-		return <Alert message="Today's trips" type='warning' showIcon />
-	} else if (moment(el1).isBefore(moment())) {
-		return (
-			<Alert
-				message='Trip dates are in the past. Please update order dates'
-				type='error'
-				showIcon
-			/>
-		)
-	} else {
-		return `Trip date ${moment(el1).format('M/D/YY')}  count ${el2.length}`
-	}
-}
+import {panelHeaderHelper} from '../Shared/CollapsePanelHelper'
 
 const CollapseTrips = props => {
 	const orders = props.orders || []
@@ -63,8 +40,8 @@ const CollapseTrips = props => {
 	return (
 		<Collapse>
 			{groupedArr.map((el, index) => (
-				<Panel key={index} header={alertHelper(el[0], el[1])}>
-					<TableOrdersByStatus ordersArray={el[1]} />
+				<Panel key={index} header={panelHeaderHelper(el[0], el[1])}>
+					<DefaultTable ordersArray={el[1]} />
 				</Panel>
 			))}
 		</Collapse>

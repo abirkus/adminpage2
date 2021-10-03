@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux'
 import {
 	getSingleEmailThunk,
 	clearSingleEmailThunk,
-} from '../../store/singleemail'
+} from '../../Redux/google/singleemail'
 import moment from 'moment'
 
 const EmailSummaryCard = props => {

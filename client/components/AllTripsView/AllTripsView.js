@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react'
-import CollapseByBothDates from '../HomePageView/CollapseByBothDates'
+import CollapseTrips from '../HomePageView/CollapseTrips'
 import {useDispatch, useSelector} from 'react-redux'
 import {getConfirmedTripsArray} from '../util'
-import {getActiveOrdersThunk} from '../../store/activeOrders'
+import {getActiveOrdersThunk} from '../../Redux/orders/activeOrders'
 
 const confirmedTripsStatusArr = getConfirmedTripsArray()
 
@@ -18,7 +18,7 @@ const AllTripsView = () => {
 		confirmedTripsStatusArr.includes(el.status)
 	)
 
-	return <CollapseByBothDates confirmedTrips={confirmedTrips} />
+	return <CollapseTrips orders={confirmedTrips} />
 }
 
 export default AllTripsView

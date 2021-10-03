@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchServicesThunk} from '../../store/services'
-import {addOrderServiceThunk} from '../../store/singleorder'
+import {fetchServicesThunk} from '../../Redux/services/services'
+import {addOrderServiceThunk} from '../../Redux/orders/singleorder'
 import {Select, Button} from 'antd'
 
 const {Option} = Select

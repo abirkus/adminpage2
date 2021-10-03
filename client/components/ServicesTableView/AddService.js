@@ -3,7 +3,7 @@ import {Modal, Button, Form, Input, InputNumber, Popover} from 'antd'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faPlusCircle} from '@fortawesome/free-solid-svg-icons'
 import {useDispatch} from 'react-redux'
-import {addServiceThunk} from '../../store/services'
+import {addServiceThunk} from '../../Redux/services/services'
 
 const layout = {
 	labelCol: {span: 8},

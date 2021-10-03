@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {getUsersThunk} from '../../store/users'
+import {getUsersThunk} from '../../Redux/users/users'
 import {Table} from 'antd'
 import UsersTableColumns from '../Table/UsersTableColumns'
 

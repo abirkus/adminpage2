@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import {useParams} from 'react-router-dom'
-import {getEmailsThunk, clearEmailsThunk} from '../../store/emails'
+import {getEmailsThunk, clearEmailsThunk} from '../../Redux/google/emails'
 import SingleEmail from './SingleEmail.js'
 import ErrorHandler from './ErrorHandler'
 import {useDispatch, useSelector} from 'react-redux'

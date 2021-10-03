@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {connect, useDispatch} from 'react-redux'
 import PropTypes from 'prop-types'
-import {auth} from '../store'
+import {auth} from '../Redux'
 import {Button, Form, Input} from 'antd'
 import {GoogleOutlined, UserOutlined, LockOutlined} from '@ant-design/icons'
 

@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {fetchServicesThunk} from '../../store/services'
+import {fetchServicesThunk} from '../../Redux/services/services'
 import {Table} from 'antd'
 import AddService from './AddService'
 import ServicesColumns from '../Table/ServicesColumns'
