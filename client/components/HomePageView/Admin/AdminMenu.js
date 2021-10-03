@@ -13,6 +13,7 @@ import {
 	getPotentialLeadsStatusArray,
 	getConfirmedTripsArray,
 } from '../../util'
+import columns from '../../Table/HomeTableColumns'
 
 import {Layout, Menu} from 'antd'
 import {
@@ -63,7 +64,13 @@ const AdminMenu = () => {
 	)
 
 	const components = {
-		1: <CollapseByDate orders={actionArr} dateColumn='pickupDate' />,
+		1: (
+			<CollapseByDate
+				orders={actionArr}
+				dateColumn='pickupDate'
+				columns={columns}
+			/>
+		),
 		2: <DefaultTable ordersArray={workZoneArr} />,
 		3: <CollapseTrips orders={confirmedTrips} />,
 		4: <DefaultTable ordersArray={invoiceArr} pagination={true} />,
