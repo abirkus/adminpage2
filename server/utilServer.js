@@ -57,5 +57,6 @@ module.exports = {
 		'ready to be returned',
 		'booked new',
 		'in process',
+		'in repair',
 	],
 }

@@ -66,7 +66,13 @@ export const getCompletedStatusArray = () => {
 }
 
 export const getConfirmedTripsArray = () => {
-	return ['confirmed', 'ready to be returned', 'booked new', 'in process']
+	return [
+		'confirmed',
+		'ready to be returned',
+		'booked new',
+		'in process',
+		'in repair',
+	]
 }
 
 export const tagColorsArray = () => {
