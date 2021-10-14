@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getActiveOrdersThunk} from '../../../Redux/orders/activeOrders'
 import DefaultTable from '../DefaultTable'
+import InvoicesTable from '../InvoicesTable'
 import CollapseByDate from '../CollapseByDate'
 import CollapseTrips from '../CollapseTrips'
 import SearchBar from '../../Shared/SearchBar'
@@ -73,7 +74,7 @@ const AdminMenu = () => {
 		),
 		2: <DefaultTable ordersArray={workZoneArr} />,
 		3: <CollapseTrips orders={confirmedTrips} />,
-		4: <DefaultTable ordersArray={invoiceArr} pagination={true} />,
+		4: <InvoicesTable ordersArray={invoiceArr} />,
 		5: <DefaultTable ordersArray={quotesArr} />,
 		6: <DefaultTable ordersArray={leadsArr} />,
 	}
