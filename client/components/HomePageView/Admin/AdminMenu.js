@@ -72,11 +72,11 @@ const AdminMenu = () => {
 				columns={columns}
 			/>
 		),
-		2: <DefaultTable ordersArray={workZoneArr} />,
-		3: <CollapseTrips orders={confirmedTrips} />,
+		2: <DefaultTable ordersArray={workZoneArr} type='trips' />,
+		3: <CollapseTrips orders={confirmedTrips} type='trips' />,
 		4: <InvoicesTable ordersArray={invoiceArr} />,
-		5: <DefaultTable ordersArray={quotesArr} />,
-		6: <DefaultTable ordersArray={leadsArr} />,
+		5: <DefaultTable ordersArray={quotesArr} type='default' />,
+		6: <DefaultTable ordersArray={leadsArr} type='default' />,
 	}
 
 	return (

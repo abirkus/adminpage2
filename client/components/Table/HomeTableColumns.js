@@ -90,7 +90,7 @@ const columns = [
 		title: 'dropoffDate',
 		dataIndex: 'dropoffDate',
 		key: 'dropoffDate',
-		sorter: (a, b) => m(a.pickupDate).diff(m(b.pickupDate)),
+		sorter: (a, b) => m(a.dropoffDate).diff(m(b.dropoffDate)),
 		sortDirections: ['descend', 'ascend'],
 		render: value => <DateCell value={value} />,
 	},
