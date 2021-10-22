@@ -41,7 +41,7 @@ const CollapseTrips = props => {
 		<Collapse>
 			{groupedArr.map((el, index) => (
 				<Panel key={index} header={panelHeaderHelper(el[0], el[1])}>
-					<DefaultTable ordersArray={el[1]} />
+					<DefaultTable ordersArray={el[1]} type={props.type} />
 				</Panel>
 			))}
 		</Collapse>
