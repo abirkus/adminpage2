@@ -12,7 +12,6 @@
     "lint": "eslint ./ --ignore-path .gitignore",
     "lint-fix": "npm run lint -- --fix",
     "prettify": "prettier --write \"**/*.{js,jsx,json,css,scss,md}\"",
-    "postinstall": "touch secrets.js",
     "seed": "node server/db/seed.js",
     "seed:cars": "node server/db/seedCarTable.js",
     "start": "node server/index.js",
