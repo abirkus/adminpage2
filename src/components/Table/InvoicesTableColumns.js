@@ -1,5 +1,5 @@
-import React from 'react';
-import m from 'moment';
+import React from 'react'
+import m from 'moment'
 import {
   DateCell,
   OrderDetailsCell,
@@ -9,12 +9,18 @@ import {
   ServicesCell,
   ConciergeCell,
   CarMakeCell,
-} from './Cells.js';
-import getColumnSearchProps from './ColumnFilter.js';
+} from './Cells.js'
+import getColumnSearchProps from './ColumnFilter.js'
 
-const defaultStringCompareOptions = { sensitivity: 'base' };
+const defaultStringCompareOptions = { sensitivity: 'base' }
 
-const InvoiceColumns = (searchInput, searchText, searchedColumn, handleSearch, handleReset) => [
+const InvoiceColumns = (
+  searchInput,
+  searchText,
+  searchedColumn,
+  handleSearch,
+  handleReset
+) => [
   {
     title: 'Order Link',
     dataIndex: 'hash',
@@ -26,14 +32,15 @@ const InvoiceColumns = (searchInput, searchText, searchedColumn, handleSearch, h
     dataIndex: 'status',
     align: 'center',
     key: 'status',
-    sorter: (a, b) => a.status.localeCompare(b.status, defaultStringCompareOptions),
+    sorter: (a, b) =>
+      a.status.localeCompare(b.status, defaultStringCompareOptions),
     ...getColumnSearchProps(
       'status',
       searchInput,
       searchText,
       searchedColumn,
       handleSearch,
-      handleReset,
+      handleReset
     ),
     render: (value) => <StatusCell value={value} />,
   },
@@ -93,6 +100,6 @@ const InvoiceColumns = (searchInput, searchText, searchedColumn, handleSearch, h
     sortDirections: ['descend', 'ascend'],
     render: (value) => <DateCell value={value} />,
   },
-];
+]
 
-export default InvoiceColumns;
+export default InvoiceColumns

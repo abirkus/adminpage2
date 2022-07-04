@@ -1,8 +1,6 @@
-public/**
-public/**
-dist/**
-dist/**
+public/bundle.js
+public/bundle.js.map
+dist/bundle.js
+dist/bundle.js.map
 package-lock.json
-pnpm-lock.json
-yarn-lock.json
 package.json

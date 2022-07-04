@@ -1,16 +1,18 @@
-import React from 'react';
-import { Card, Button, Tag } from 'antd';
-import UpdateDriver from './UpdateDriver';
-import { DeleteFilled } from '@ant-design/icons';
-import { removeDriverThunk as removeDriver } from '../../store/drivers.js';
-import { useDispatch } from 'react-redux';
+import React from 'react'
+import { Card, Button, Tag } from 'antd'
+import UpdateDriver from './UpdateDriver'
+import { DeleteFilled } from '@ant-design/icons'
+import { removeDriverThunk } from '../../store/drivers.js'
+import { useDispatch } from 'react-redux'
 
-const DriverCard = ({ driver }) => {
-  const dispatch = useDispatch();
+const DriverCard = (props) => {
+  const dispatch = useDispatch()
 
   const handleClick = (id) => {
-    dispatch(removeDriver(id));
-  };
+    dispatch(removeDriverThunk(id))
+  }
+
+  const driver = props.driver
 
   return (
     <Card
@@ -26,15 +28,10 @@ const DriverCard = ({ driver }) => {
           type="text"
           id={driver.id}
           icon={<DeleteFilled style={{ color: '#ff1212' }} />}
-        ></Button>,
+        ></Button>
       ]}
       cover={
-        <img
-          src={
-            driver.imageUrl ||
-            'https://play-lh.googleusercontent.com/Q8RMXj6aSFQolfCuivGnXqF1ELD31HIuEFifG8MiDeHPjpFh9umrIkKL1VEvHnT_Ww'
-          }
-        />
+        <img src={driver.imageUrl || 'https://play-lh.googleusercontent.com/Q8RMXj6aSFQolfCuivGnXqF1ELD31HIuEFifG8MiDeHPjpFh9umrIkKL1VEvHnT_Ww'} />
       }
       title={driver.name}
     >
@@ -78,7 +75,7 @@ const DriverCard = ({ driver }) => {
         )}
       </div>
     </Card>
-  );
-};
+  )
+}
 
-export default DriverCard;
+export default DriverCard

@@ -1,25 +1,25 @@
-const router = require('express').Router();
-const { people } = require('./oAuth2Client');
-module.exports = router;
+const router = require('express').Router()
+const { people } = require('./oAuth2Client')
+module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    let result = await listConnectionNames();
-    res.json(result);
+    let result = await listConnectionNames()
+    res.json(result)
   } catch (err) {
-    next(err);
+    next(err)
   }
-});
+})
 
 router.post('/', async (req, res, next) => {
   try {
-    let newcontact = req.body;
-    let result = await addNewContact(newcontact);
-    res.json(result);
+    let newcontact = req.body
+    let result = await addNewContact(newcontact)
+    res.json(result)
   } catch (err) {
-    next(err);
+    next(err)
   }
-});
+})
 
 /**
  * Print the display name if available for 10 connections.
@@ -27,22 +27,26 @@ router.post('/', async (req, res, next) => {
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
 async function listConnectionNames() {
-  const response = await people().connections.list({
+  //const service = await google.people({version: 'v1', auth})
+  const response = await people.people.connections.list({
     resourceName: 'people/me',
     pageSize: 2000,
     sortOrder: 'FIRST_NAME_ASCENDING',
     personFields: 'names,emailAddresses,phoneNumbers',
-  });
+  })
 
   if (!response) {
-    return console.log('The API returned an error: ');
+    return console.log('The API returned an error: ')
   } else {
-    return response.data.connections;
+    return response.data.connections
   }
 }
 
 async function addNewContact(obj) {
-  const response = await people().createContact({
+  //console.log('INSIDE CONTACTS API', obj)
+  //const service = await google.people({version: 'v1', auth})
+
+  const response = await people.people.createContact({
     requestBody: {
       emailAddresses: [{ value: obj.email }],
       phoneNumbers: [
@@ -60,11 +64,11 @@ async function addNewContact(obj) {
         },
       ],
     },
-  });
+  })
 
   if (!response) {
-    return console.log('The API returned an error: ');
+    return console.log('The API returned an error: ')
   } else {
-    return response.data;
+    return response.data
   }
 }
