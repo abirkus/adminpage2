@@ -8,68 +8,68 @@ const moment = require('moment')
 const Order = db.define('order', {
   hash: {
     type: Sequelize.STRING,
-    primaryKey: true,
+    primaryKey: true
   },
   status: {
     type: Sequelize.STRING,
-    defaultValue: 'booked new',
+    defaultValue: 'booked new'
   },
   customerComments: {
-    type: Sequelize.TEXT,
+    type: Sequelize.TEXT
   },
   pickupDate: {
     type: Sequelize.DATE,
     validate: {
-      isDate: true,
+      isDate: true
     },
-    allowNull: true,
+    allowNull: true
   },
   dropoffDate: {
     type: Sequelize.DATE,
     validate: {
-      isDate: true,
+      isDate: true
     },
-    allowNull: true,
+    allowNull: true
   },
   pickupLocation: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
   },
   carYear: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.INTEGER
   },
   carMake: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
   },
   carModel: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
   },
   carColor: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
   },
   vin: {
     type: Sequelize.STRING,
-    allowNull: true,
+    allowNull: true
   },
   promoCode: {
     type: Sequelize.STRING,
-    allowNull: true,
+    allowNull: true
   },
   discount: {
     type: Sequelize.DECIMAL(10, 2),
-    allowNull: true,
+    allowNull: true
   },
   isInCalendar: {
     type: Sequelize.BOOLEAN,
-    defaultValue: false,
+    defaultValue: false
   },
   stickShift: {
     type: Sequelize.BOOLEAN,
-    defaultValue: false,
+    defaultValue: false
   },
   flexibleOnTime: {
     type: Sequelize.BOOLEAN,
-    defaultValue: false,
-  },
+    defaultValue: false
+  }
 })
 
 if (process.env.ENVIRONMENT === 'PRODUCTION') {
@@ -81,17 +81,11 @@ if (process.env.ENVIRONMENT === 'PRODUCTION') {
       if (inst._changed.pickUpDriverId) {
         const driver = await Driver.findByPk(newinst.pickUpDriverId)
         newinst.pickUpDriverEmail = driver.email
-        await axios.post(
-          `${process.env.DOMAIN}/auth/google/calendar/newevent`,
-          newinst
-        )
+        await axios.post(`${process.env.DOMAIN}/auth/google/calendar/newevent`, newinst)
       } else if (inst._changed.returnDriverId) {
         const driver = await Driver.findByPk(newinst.returnDriverId)
         newinst.returnDriverEmail = driver.email
-        await axios.post(
-          `${process.env.DOMAIN}/auth/google/calendar/newevent`,
-          newinst
-        )
+        await axios.post(`${process.env.DOMAIN}/auth/google/calendar/newevent`, newinst)
       }
     } catch (err) {
       console.log(err.message)
@@ -102,7 +96,7 @@ if (process.env.ENVIRONMENT === 'PRODUCTION') {
     try {
       const newinst = { ...inst.dataValues }
       const customerObject = await Customer.findOne({
-        where: { phoneNumber: newinst.customerPhoneNumber },
+        where: { phoneNumber: newinst.customerPhoneNumber }
       })
       const cust = customerObject.dataValues
       const orderInfo = { ...inst.dataValues }
@@ -114,19 +108,16 @@ if (process.env.ENVIRONMENT === 'PRODUCTION') {
         year: orderInfo.carYear,
         customerName: `${cust.firstName} ${cust.lastName}`,
         pickupDate: moment(orderInfo.pickupDate).format('MM-DD-YY HH:00'),
-        dropoffDate: moment(orderInfo.dropoffDate).format('MM-DD-YY HH:00'),
+        dropoffDate: moment(orderInfo.dropoffDate).format('MM-DD-YY HH:00')
       }
-      await axios.post(
-        `${process.env.DOMAIN}/auth/google/gmail/sendconfirmation`,
-        payload
-      )
+      await axios.post(`${process.env.DOMAIN}/auth/google/gmail/sendconfirmation`, payload)
     } catch (err) {
       console.error(err)
     }
   }
 
-  Order.afterCreate(sendEmail)
-  Order.afterUpdate(createInGoogle)
+  // Order.afterCreate(sendEmail)
+  // Order.afterUpdate(createInGoogle)
 }
 
 module.exports = Order
